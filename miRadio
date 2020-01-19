@@ -1,0 +1,45 @@
+public class miRadio implements radio{
+
+    private boolean prendido = false;
+    private int[] guardado_AM = new int[12];
+    private int[] guardado_FM = new int[12];
+    private float estaciones;
+    private String frecuencia;
+
+    public miRadio(){
+        estaciones = 87.9;
+        frecuencia = "a.m";
+    }
+
+    public void onOff(){
+        if(estado == false){
+            prendido = true;
+        } else if(estado = true){
+            prendido = false;
+        }
+    }
+
+    public boolean estado(){
+        return prendido;
+    }
+
+    public void cambiarFrecuencia(){
+        if(frecuencia.equalsIgnoreCase("a.m")){
+            frecuencia = "f.m";
+        } else if(frecuencia.equalsIgnoreCase("f.m")){
+            frecuencia = "a.m";
+        }
+    }
+
+    public void avanzar(){
+        if(estacion < 107.9){
+            estaciones = estaciones + 0.2;
+        } else if(estaciones == 107.9){
+            estaciones = 87.9;
+        }
+    }
+
+
+
+
+}
