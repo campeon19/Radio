@@ -1,8 +1,8 @@
 public class miRadio implements radio{
 
     private boolean prendido = false;
-    private int[] guardado_AM = new int[12];
-    private int[] guardado_FM = new int[12];
+    private float[] guardado_AM = new int[12];
+    private float[] guardado_FM = new int[12];
     private float estaciones;
     private String frecuencia;
 
@@ -12,9 +12,9 @@ public class miRadio implements radio{
     }
 
     public void onOff(){
-        if(estado == false){
+        if(prendido == false){
             prendido = true;
-        } else if(estado = true){
+        } else if(prendido = true){
             prendido = false;
         }
     }
@@ -39,7 +39,28 @@ public class miRadio implements radio{
         }
     }
 
+    public void guardar(int x){
+        int y = x-1;
+        if(frecuencia.equalsIgnoreCase("a.m")){
+            guardado_AM[x] = estaciones;
+        } else if(frecuencia.equalsIgnoreCase("f.m")){
+            guardado_FM[x] = estaciones;
+        }
+    }
 
+    public void seleccionarEmisora(int boton){
+        int y = boton - 1;
+        if(frecuencia.equalsIgnoreCase("a.m")){
+            estaciones = guardado_AM[y];
+        } else if(frecuencia.equalsIgnoreCase("f.m")){
+            estaciones = guardado_FM[y];
+        }
+    } 
 
+    public String estacionActual(){
+        String devolver_estacion = String.valueOf(estaciones);
+
+        return devolver_estacion;
+    }
 
 }
