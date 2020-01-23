@@ -1,3 +1,9 @@
+/* Christian Daniel Perez De Leon (19710)
+ * Pablo Reyna (19822)
+ * Fecha de creacion: 18/01/2020
+ * Ultima edicion: 22/01/2020
+ */
+
 import java.util.Scanner;
 
 public class Driver {
@@ -10,8 +16,8 @@ public class Driver {
 		
 		RadioInterface radio = new miRadio();
 		
-		System.out.println("------- Simulador de Radio -------");
-		
+		System.out.println("------- Bienvenido a la radio de moda la colochona -------");
+		//Despliegue de menu
 		while(opcion != 8) {
 			
 			System.out.println("\nMenu:");
@@ -27,7 +33,7 @@ public class Driver {
 			
 			opcion = scan.nextInt();
 			
-			switch(opcion) {
+			switch(opcion) { //cambiar segun la opcion que haya escogido el usuario
 			case 1:
 				radio.onOff();
 				break;
