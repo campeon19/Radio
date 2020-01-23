@@ -1,4 +1,4 @@
-public interface radio{
+public interface RadioInterface{
 
     public String estacionActual();
 
