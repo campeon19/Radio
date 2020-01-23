@@ -1,13 +1,15 @@
-public class miRadio implements radio{
-
-    private boolean prendido = false;
-    private float[] guardado_AM = new int[12];
-    private float[] guardado_FM = new int[12];
-    private float estaciones;
+public class miRadio implements RadioInterface {
+	
+	private boolean prendido = false;
+    private int[] guardado_AM = new int[12];
+    private double[] guardado_FM = new double[12];
+    private double fm;
+    private int am;
     private String frecuencia;
 
     public miRadio(){
-        estaciones = 87.9;
+        fm = 87.9;
+        am = 530;
         frecuencia = "a.m";
     }
 
@@ -32,35 +34,48 @@ public class miRadio implements radio{
     }
 
     public void avanzar(){
-        if(estacion < 107.9){
-            estaciones = estaciones + 0.2;
-        } else if(estaciones == 107.9){
-            estaciones = 87.9;
-        }
+    	if(frecuencia.equalsIgnoreCase("f.m")) {
+    		 if(fm < 107.9){
+    	            fm = fm + 0.2;
+    	        } else if(fm == 107.9){
+    	            fm = 87.9;
+    	        }
+    	} else if (frecuencia.equalsIgnoreCase("a.m")) {
+    		if(am < 1610) {
+    			am = am + 10;
+    		}else if(am == 1610) {
+    			am = 530;
+    		}
+    	}
+       
     }
 
     public void guardar(int x){
         int y = x-1;
         if(frecuencia.equalsIgnoreCase("a.m")){
-            guardado_AM[x] = estaciones;
+            guardado_AM[y] = am;
         } else if(frecuencia.equalsIgnoreCase("f.m")){
-            guardado_FM[x] = estaciones;
+            guardado_FM[y] = fm;
         }
     }
 
     public void seleccionarEmisora(int boton){
         int y = boton - 1;
         if(frecuencia.equalsIgnoreCase("a.m")){
-            estaciones = guardado_AM[y];
+            am = guardado_AM[y];
         } else if(frecuencia.equalsIgnoreCase("f.m")){
-            estaciones = guardado_FM[y];
+            fm = guardado_FM[y];
         }
     } 
 
     public String estacionActual(){
-        String devolver_estacion = String.valueOf(estaciones);
+    	String devolver_estacion;
+    	if(frecuencia.equalsIgnoreCase("a.m")) {
+    		devolver_estacion = String.valueOf(am);
+    	} else {
+    		devolver_estacion = String.valueOf(fm);
+    	}
 
         return devolver_estacion;
     }
-
 }
